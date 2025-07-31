@@ -11,13 +11,21 @@ function criarTagLiAdicionarNaUl(tag, texto) {
 }
 
 function adicionarAmigo() {
-  criarTagLiAdicionarNaUl(listaAmigos, amigoSecreto.value);
-  amigos.push(amigoSecreto.value);
-  amigoSecreto.value = "";
+  if (amigoSecreto.value) {
+    criarTagLiAdicionarNaUl(listaAmigos, amigoSecreto.value);
+    amigos.push(amigoSecreto.value);
+    amigoSecreto.value = "";
+  } else {
+    alert("Digite um nome de um amigo para adicionar!");
+  }
 }
 
 function sortearAmigo() {
-  let sorteado = parseInt(Math.random() * amigos.length);
-  let amigoSorteado = amigos[sorteado];
-  criarTagLiAdicionarNaUl(resultado, `O amigo secreto sorteado é: ${amigoSorteado}!`);
+  if (amigos.length > 0) {
+    let sorteado = parseInt(Math.random() * amigos.length);
+    let amigoSorteado = amigos[sorteado];
+    criarTagLiAdicionarNaUl(resultado, `O amigo secreto sorteado é: ${amigoSorteado}!`);
+  } else {
+    alert("Para sortear um amigo secreto você precisa adicionar amigos!")
+  }
 }
